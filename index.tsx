@@ -1,14 +1,13 @@
 import { useRP2040 } from "@tsci/seveibar.rp2040"
 import { useUsbC } from "@tsci/seveibar.smd-usb-c"
-import { useAMS1117_3_3 } from "@tsci/seveibar.AMS1117_3v3-regulator"
+import { MCP1700T_3302E_TT } from "./imports/MCP1700T_3302E_TT"
 import { useABM8_272_T3 } from "@tsci/seveibar.ABM8_272_T3"
 import { useW25Q16JVSSIQ } from "@tsci/seveibar.W25Q16JVSSIQ-flash-memory-16m"
-
+import { sel } from "tscircuit"
 
 export default () => {
   const RP2040 = useRP2040("U1")
   const USBC = useUsbC("USB1")
-  const VReg = useAMS1117_3_3("REG1")
   const Crystal = useABM8_272_T3("X1")
   const Flash = useW25Q16JVSSIQ("U2")
 
@@ -18,7 +17,7 @@ export default () => {
 
       <RP2040 />
       <USBC schX={-20} pcbY={51 / 2 - 4} pcbRotation={180} />
-      <VReg schX={-16} schY={1.25} pcbY={10} pcbRotation={-90} />
+      <MCP1700T_3302E_TT name="REG1" schX={-16} schY={1.25} pcbY={10} pcbRotation={-90} />
       <Crystal schX={-7} pcbX={-2} pcbY={-8} pcbRotation={180} />
       <Flash schX={10} />
 
@@ -273,17 +272,17 @@ export default () => {
 
 
       {/* VReg */}
-      <trace from={"net.VBUS"} to={VReg.VIN} />
-      <trace from={"net.GND"} to={VReg.GND} />
-      <trace from={"net.V3_3"} to={VReg.VOUT2} />
+      <trace from={"net.VBUS"} to={sel.REG1.VIN} />
+      <trace from={"net.GND"} to={sel.REG1.GND} />
+      <trace from={"net.V3_3"} to={sel.REG1.VOUT2} />
 
       <capacitor
         name="C13"
         capacitance="10uF"
         footprint="0402"
         connections={{
-          pin1: VReg.VIN,
-          pin2: VReg.GND
+          pin1: sel.REG1.VIN,
+          pin2: sel.REG1.GND
         }}
         schRotation={-90}
         schX={-17.2}
@@ -295,8 +294,8 @@ export default () => {
         capacitance="10uF"
         footprint="0402"
         connections={{
-          pin1: VReg.VOUT2,
-          pin2: VReg.GND
+          pin1: sel.REG1.VOUT2,
+          pin2: sel.REG1.GND
         }}
         schRotation={-90}
         schX={-14.5}

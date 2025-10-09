@@ -16,3 +16,8 @@ I finished the entire schematic following this guide: https://blueprint.hackclub
 ![1759612653-wayshot.png](https://blueprint.hackclub.com/user-attachments/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDIxLCJwdXIiOiJibG9iX2lkIn19--a4e369abf04f23acca7989065cd63a3b89779afa/1759612653-wayshot.png)
   
 
+## 10/9/2025 - Move Components into the right place  
+
+![1760043924-wayshot.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTI4OCwicHVyIjoiYmxvYl9pZCJ9fQ==--46858915aab304bf37cae374412a7075e1cef57b/1760043924-wayshot.png)
+I put everything in the same place, and I also had to find a new flash chip since the old one was too big. I also had to fix a few tscircuit bugs to get everything to work. Now I just need to get the tscircuit autorouter to autoroute. I'll probably have to file a few PRs to get the autorouter working.  
+
